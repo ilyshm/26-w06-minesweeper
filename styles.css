@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+  color-scheme: dark;
+  --ink: #f3f7f0;
+  --muted: #9aa79c;
+  --canvas: #111714;
+  --panel: #19221d;
+  --panel-light: #202c25;
+  --tile: #29372f;
+  --tile-hover: #34463a;
+  --tile-open: #dce6d8;
+  --accent: #d6ef72;
+  --accent-dark: #26301a;
+  --danger: #ff806c;
+  --line: rgba(220, 238, 218, 0.12);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ink);
+  background: radial-gradient(circle at 12% 12%, #27382d 0, transparent 32%),
+    radial-gradient(circle at 88% 88%, #1d3226 0, transparent 35%), var(--canvas);
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.game-shell { width: min(680px, calc(100% - 32px)); margin: 0 auto; padding: 56px 0 42px; }
+.game-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+.eyebrow { margin: 0 0 12px; color: var(--accent); font: 500 12px 'DM Mono', monospace; letter-spacing: 1px; }
+h1 { margin: 0; font-size: clamp(38px, 8vw, 64px); line-height: .95; letter-spacing: -2px; }
+.subtitle { max-width: 370px; margin: 16px 0 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
+
+button { font: inherit; }
+.reset-button { border: 1px solid var(--accent); border-radius: 6px; padding: 12px 18px; color: var(--accent-dark); background: var(--accent); font-weight: 700; cursor: pointer; transition: transform .2s, background .2s; }
+.reset-button:hover { background: #e6fa91; transform: translateY(-2px); }
+.reset-button:focus-visible, .cell:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+.game-panel { padding: 18px; border: 1px solid var(--line); border-radius: 10px; background: rgba(25, 34, 29, .92); box-shadow: 0 24px 70px rgba(0, 0, 0, .24); }
+.scoreboard { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; margin-bottom: 18px; padding: 8px 4px 18px; border-bottom: 1px solid var(--line); }
+.score-item { display: grid; gap: 4px; }
+.score-item-right { text-align: right; }
+.score-label { color: var(--muted); font: 500 11px 'DM Mono', monospace; text-transform: uppercase; }
+.score-item strong { font: 500 28px 'DM Mono', monospace; }
+.score-item small { margin-left: 5px; color: var(--muted); font: 400 12px 'DM Mono', monospace; }
+.status { color: var(--accent); font-size: 13px; text-align: center; }
+
+.board { display: grid; grid-template-columns: repeat(9, 1fr); gap: 5px; width: min(100%, 540px); margin: 0 auto; aspect-ratio: 1; }
+.cell { display: grid; place-items: center; min-width: 0; padding: 0; border: 0; border-radius: 4px; color: var(--ink); background: var(--tile); font: 700 clamp(13px, 3vw, 20px) 'DM Mono', monospace; cursor: pointer; transition: background .15s, transform .15s; }
+.cell:hover:not(.is-open):not(.is-flagged) { background: var(--tile-hover); transform: scale(.96); }
+.cell.is-open { color: #344b3a; background: var(--tile-open); cursor: default; }
+.cell.is-mine { color: #fff; background: var(--danger); }
+.cell.is-exploded { background: #ff5c4c; transform: scale(.94); }
+.cell.is-flagged { color: var(--accent); }
+.cell[data-number="1"] { color: #4778b4; }
+.cell[data-number="2"] { color: #43805b; }
+.cell[data-number="3"] { color: #c5604a; }
+.cell[data-number="4"], .cell[data-number="5"] { color: #7854a1; }
+.cell.is-open[data-number] { background: var(--tile-open); }
+
+.legend { display: flex; justify-content: center; gap: 24px; margin-top: 20px; color: var(--muted); font-size: 12px; }
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.legend-mark { display: inline-grid; place-items: center; width: 16px; height: 16px; border-radius: 3px; }
+.legend-open { background: var(--tile-open); }
+.legend-flag { color: var(--accent); background: var(--tile); font: 700 11px 'DM Mono', monospace; }
+
+@media (max-width: 560px) {
+  .game-shell { width: min(100% - 20px, 680px); padding-top: 30px; }
+  .game-header { align-items: flex-start; }
+  .subtitle { font-size: 13px; }
+  .game-panel { padding: 12px; }
+  .scoreboard { gap: 8px; }
+  .status { max-width: 120px; font-size: 11px; }
+  .board { gap: 3px; }
+  .legend { gap: 12px; }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>지뢰찾기</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="game-header">
+      <div>
+        <p class="eyebrow">MINESWEEPER / 09 x 09</p>
+        <h1>지뢰찾기</h1>
+        <p class="subtitle">숨겨진 지뢰를 피해 모든 안전한 칸을 열어보세요.</p>
+      </div>
+      <button class="reset-button" id="resetButton" type="button">새 게임</button>
+    </header>
+
+    <section class="game-panel" aria-label="지뢰찾기 게임">
+      <div class="scoreboard">
+        <div class="score-item">
+          <span class="score-label">남은 지뢰</span>
+          <strong id="mineCount">10</strong>
+        </div>
+        <div class="status" id="status" aria-live="polite">첫 칸을 열어 게임을 시작하세요.</div>
+        <div class="score-item score-item-right">
+          <span class="score-label">시간</span>
+          <strong><span id="timer">000</span><small>초</small></strong>
+        </div>
+      </div>
+
+      <div class="board" id="board" role="grid" aria-label="9x9 지뢰찾기 격자"></div>
+
+      <div class="legend" aria-label="게임 조작 안내">
+        <span><b class="legend-mark legend-open"></b> 좌클릭: 열기</span>
+        <span><b class="legend-mark legend-flag">F</b> 우클릭: 깃발</span>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
