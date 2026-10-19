@@ -287,6 +287,8 @@ function buildBoard() {
   boardElement.replaceChildren();
   boardElement.style.setProperty('--columns', difficulty.columns);
   boardElement.style.setProperty('--rows', difficulty.rows);
+  boardElement.classList.toggle('is-beginner', difficultyKey === 'beginner');
+  boardElement.classList.toggle('is-intermediate', difficultyKey === 'intermediate');
   boardElement.classList.toggle('is-expert', difficultyKey === 'expert');
   board = [];
   for (let row = 0; row < difficulty.rows; row += 1) {
