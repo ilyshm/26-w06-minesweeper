@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>지뢰찾기</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="game-window">
+    <header class="title-bar">
+      <span class="title-icon">◆</span>
+      <h1>지뢰찾기</h1>
+      <span class="difficulty">초급 09 x 09</span>
+    </header>
+
+    <section class="game-content" aria-label="지뢰찾기 게임">
+      <div class="dashboard">
+        <div class="counter-box" aria-label="남은 지뢰 수">
+          <span class="counter-label">MINES</span>
+          <strong id="mineCount">010</strong>
+        </div>
+
+        <button class="face-button" id="resetButton" type="button" aria-label="새 게임 시작">🙂</button>
+
+        <div class="counter-box timer-box" aria-label="경과 시간">
+          <span class="counter-label">TIME</span>
+          <strong id="timer">000</strong>
+        </div>
+      </div>
+
+      <div class="board-frame">
+        <div class="board" id="board" role="grid" aria-label="9 x 9 지뢰찾기 게임판"></div>
+      </div>
+
+      <p class="status" id="status" aria-live="polite">표정 버튼을 누르거나 첫 칸을 열어 게임을 시작하세요.</p>
+      <p class="instructions">좌클릭: 타일 열기 <span aria-hidden="true">·</span> 우클릭: 깃발 표시</p>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
